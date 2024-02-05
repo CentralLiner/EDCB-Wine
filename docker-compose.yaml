@@ -7,9 +7,11 @@ services:
       context: .
     # OS 起動時にコンテナを自動起動する
     restart: always
-    # ネットワークをホスト側と共有する
-    # 標準の bridge モード (仮想ネットワーク) だと localhost との通信が面倒
-    network_mode: host
+    network_mode: bridge
+    ports:
+       - "4510:4510"  #コンテナ側のEDCBポート転送
+       - "5510:5510"  #コンテナ側のEDCBポート転送
+       - "6510:6510"  #コンテナ側のEDCBポート転送
     # Xfce のデスクトップ環境はなぜか特権モードでないと正常に動作しない
     privileged: true
     # ボリュームのマウント設定
