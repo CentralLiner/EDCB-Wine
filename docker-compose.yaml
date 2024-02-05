@@ -12,6 +12,9 @@ services:
        - "4510:4510"  #コンテナ側のEDCBポート転送
        - "5510:5510"  #コンテナ側のEDCBポート転送
        - "6510:6510"  #コンテナ側のEDCBポート転送
+    #コンテナ内からホスト側へはhost.docker.internalでアクセスできるようにする
+    extra_hosts:
+        - "host.docker.internal:host-gateway"
     # Xfce のデスクトップ環境はなぜか特権モードでないと正常に動作しない
     privileged: true
     # ボリュームのマウント設定
