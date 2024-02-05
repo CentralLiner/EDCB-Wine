@@ -1,6 +1,10 @@
-##このフォークについて
-本家のEDCB-Wineはnetwork_modeがhost(ホスト側とネットワークを共有)であるため、EDCB-Wineコンテナを複数立ち上げるには多くの箇所のポート番号を変更する必要がありますが、このフォークではnetwork_modeをbridgeに変更することで、docker-compose.yamlのports欄を他で使用していないポート番号へ書き換えるだけで、複数のEDCB-Wineコンテナを稼働させることができます。
+## このフォークについて
+本家のEDCB-Wineはnetwork_modeがhost(ホスト側とネットワークを共有)であるため、EDCB-Wineコンテナを複数立ち上げるには多くの箇所のポート番号を変更する必要があります。
+
+このフォークではnetwork_modeをbridgeに変更することで、コンテナ側とホスト側のポートが隔離されるため、docker-compose.yamlのports欄を他で使用していないポート番号へ書き換えるだけで、複数のEDCB-Wineコンテナを稼働させることができます。
+
 **localhost**を指定するとコンテナ内への通信となるため、ホスト側への通信はlocalhostの代わりに**host.docker.internal**を指定します。(BonDriver_mirakc*.iniには指定済みです。)
+
 また、ホスト側以外のマシンへの通信はローカルIPアドレス(192.168.*.*など)を直接指定してください。
 
 # EDCB-Wine
